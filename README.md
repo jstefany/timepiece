@@ -1,7 +1,6 @@
 Uses CirclePlayer version of jPlayer to integrate audio into a d3.js representation of a radio show clock. 
 
 
-![CirclePlayer](https://github.com/maboa/circleplayer/raw/master/screencaps/circleplayer.png)
  
 CirclePlayer is a demo intended to showcase the jQuery HTML5 Media Library jPlayer
 [https://github.com/happyworm/jPlayer](https://github.com/happyworm/jPlayer) 
