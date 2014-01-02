@@ -32,7 +32,7 @@
                               
               var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
                 {
-                m4a: "http://www.bakeraudio.org/uploads/1/9/5/8/19585609/take_5.m4a",
+                m4a: "media/ME.m4a",
                 oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
                 }, {
                 cssSelectorAncestor: "#cp_container_1"
@@ -125,9 +125,7 @@
             .innerRadius(function(d) { return Math.sqrt(d.y); })
             .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
             
-            //var dataFile = "clock_v1.json";
-            var dataFile = "me_baseline.json";
-            //var dataFile = "atc_baseline.json";
+            var dataFile = "data/me_baseline.json";
             
             d3.json(dataFile, function(error, root) {
                     var path = svg.datum(root).selectAll("path")
