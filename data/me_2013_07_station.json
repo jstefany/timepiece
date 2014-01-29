@@ -1,0 +1,82 @@
+{
+    "name": "me_2013_07_station",
+    "children": [
+                 {"name": "Billboard", "type": "Promo", "startTime": "0:00", "size": 1.0},
+                 {"name": "Newscast 1", "type": "Newscast", "startTime": "1:00", "size": 3.0},
+                 {"name": "Newscast 2", "type": "Newscast", "startTime": "4:00", "size": 1.75,
+                 "children": [
+                              {"name": "Local news", "type": "Newscast", "startTime": "4:00", "size": 1.75}
+                              ]
+                 },
+                 {"name": "Funding credit", "type": "Credit", "startTime": "5:45", "size": 0.25},
+                 {"name": "Newscast 3", "type": "Newscast", "startTime": "6:00", "size": 3.5,
+                 "children": [
+                              {"name": "Local news", "type": "Newscast", "startTime": "6:00", "size": 2.83},
+                              {"name": "Funding credits", "type": "Credit", "startTime": "8:50", "size": 0.67}
+                              ]
+                 },
+                 {"name": "Music bed", "type": "Music", "startTime": "9:30", "size": 0.5,
+                 "children": [
+                              {"name": "Local news", "type": "Newscast", "startTime": "9:30", "size": 0.5}
+                              ]
+                 },
+                 {"name": "Segment A", "type": "Segment", "startTime": "10:00", "size": 9.0},
+                 {"name": "Promo", "type": "Promo", "startTime": "19:00", "size": 0.5},
+                 {"name": "Music bed", "type": "Music", "startTime": "19:30", "size": 1.5,
+                 "children": [
+                              {"name": "Local news", "type": "Newscast", "startTime": "19:30", "size": 1.17},
+                              {"name": "Funding credit", "type": "Credit", "startTime": "20:40", "size": 0.33}
+                              ]
+                 },
+                 {"name": "Segment B", "type": "Segment", "startTime": "21:00", "size": 7.83},
+                 {"name": "Funding credits", "type": "Credit", "startTime": "28:50", "size": 0.67},
+                 {"name": "Music bed", "type": "Music", "startTime": "29:30", "size": 0.5,
+                 "children": [
+                              {"name": "Local news", "type": "Newscast", "startTime": "29:30", "size": 0.5}
+                              ]
+                 },
+                 {"name": "Return", "type": "Promo", "startTime": "30:00", "size": 0.5},
+                 {"name": "Newscast 4", "type": "Newscast", "startTime": "30:30", "size": 3.0},
+                 {"name": "Newscast 5", "type": "Newscast", "startTime": "33:30", "size": 1.75,
+                 "children": [
+                              {"name": "Local news", "type": "Newscast", "startTime": "33:30", "size": 1.75}
+                              ]
+                 },
+                 {"name": "Funding credit", "type": "Credit", "startTime": "35:15", "size": 0.25},
+                 {"name": "Segment C", "type": "Fill segment", "startTime": "35:30", "size": 4.0,
+                 "children": [
+                              {"name": "Local feature", "type": "Segment", "startTime": "35:30", "size": 4.00}
+                              ]
+                 },
+                 {"name": "Music bed", "type": "Music", "startTime": "39:30", "size": 0.5,
+                 "children": [
+                              {"name": "Funding credits", "type": "Credit", "startTime": "39:30", "size": 0.5}
+                              ]
+                 },
+                 {"name": "Segment D", "type": "Segment", "startTime": "40:00", "size": 9.0},
+                 {"name": "Promo", "type": "Promo", "startTime": "49:00", "size": 0.5},
+                 {"name": "Music bed", "type": "Music", "startTime": "49:30", "size": 1.5,
+                 "children": [
+                              {"name": "Local news", "type": "Newscast", "startTime": "49:30", "size": 1.17},
+                              {"name": "Funding credits", "type": "Credit", "startTime": "50:40", "size": 0.33}
+                              ]
+                 },
+                 {"name": "Segment E", "type": "Segment", "startTime": "51:00", "size": 7.33,
+                 "children": [
+                              {"name": "Marketplace Morning Report", "type": "Other", "startTime": "51:00", "size": 7.33}
+                              ]
+                 },
+                 {"name": "Funding credits", "type": "Credit", "startTime": "58:20", "size": 0.67,
+                 "children": [
+                              {"name": "Marketplace promo", "type": "Promo", "startTime": "58:20", "size": 0.5},
+                              {"name": "Other", "type": "Other", "startTime": "58:50", "size": 0.17}
+                              ]
+                 },
+                 {"name": "Music bed", "type": "Music", "startTime": "59:00", "size": 1.0,
+                 "children": [
+                              {"name": "Funding credits", "type": "Credit", "startTime": "59:00", "size": 0.67},
+                              {"name": "Station ID", "type": "Promo", "startTime": "59:40", "size": 0.33}
+                              ]
+                 }
+                 ]
+}

@@ -1,0 +1,27 @@
+{
+    "name": "atc_2014_01_27_npr",
+    "children": [
+                 {"name": "Billboard", "type": "Promo", "startTime": "0:00", "size": 1.0},
+                 {"name": "Newscast 1", "type": "Newscast", "startTime": "1:00", "size": 3.0},
+                 {"name": "Newscast 2", "type": "Newscast", "startTime": "4:00", "size": 1.67},
+                 {"name": "Funder block 1", "type": "Credit", "startTime": "5:40", "size": 0.33},
+                 {"name": "Music 1", "type": "Music", "startTime": "6:00", "size": 0.5},
+                 {"name": "Segment A", "type": "Segment", "startTime": "6:30", "size": 11.83},
+                 {"name": "Music 2", "type": "Music", "startTime": "18:20", "size": 2.0},
+                 {"name": "Funder block 2", "type": "Credit", "startTime": "20:20", "size": 0.33},
+                 {"name": "Segment B", "type": "Segment", "startTime": "20:40", "size": 8.33},
+                 {"name": "Promo", "type": "Promo", "startTime": "29:00", "size": 0.5},
+                 {"name": "Return", "type": "Promo", "startTime": "29:30", "size": 0.5},
+                 {"name": "Newscast 3", "type": "Newscast", "startTime": "30:00", "size": 2.0},
+                 {"name": "Newscast 4", "type": "Newscast", "startTime": "32:00", "size": 1.5},
+                 {"name": "Music 3", "type": "Music", "startTime": "33:30", "size": 1.0},
+                 {"name": "Funder block 3", "type": "Credit", "startTime": "34:30", "size": 0.58},
+                 {"name": "Segment C", "type": "Segment", "startTime": "35:05", "size": 8.33},
+                 {"name": "Segment D", "type": "Fill segment", "startTime": "43:25", "size": 4.0},
+                 {"name": "Music 4", "type": "Music", "startTime": "47:25", "size": 2.0},
+                 {"name": "Funder block 4", "type": "Credit", "startTime": "49:25", "size": 0.58},
+                 {"name": "Segment E", "type": "Segment", "startTime": "50:00", "size": 8.33},
+                 {"name": "Funder block 5", "type": "Credit", "startTime": "58:20", "size": 0.58},
+                 {"name": "Music 5", "type": "Music", "startTime": "58:55", "size": 1.08}
+                 ]
+}

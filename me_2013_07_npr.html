@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.5; user-scalable=no;">
+        <title>Morning Edition</title>
+        <link rel="stylesheet" href="css/clock.css">
+        <link rel="stylesheet" href="css/not.the.skin.css">
+        <link rel="stylesheet" href="circle.skin/circle.player.css">
+            
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.transform2d.js"></script>
+        <script type="text/javascript" src="js/jquery.grab.js"></script>
+        <script type="text/javascript" src="js/jquery.jplayer.js"></script>
+        <script type="text/javascript" src="js/mod.csstransforms.min.js"></script>
+        <script type="text/javascript" src="js/circle.player.js"></script>
+        <!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                              
+              /*
+               * Instance CirclePlayer inside jQuery doc ready
+               *
+               * CirclePlayer(jPlayerSelector, media, options)
+               *   jPlayerSelector: String - The css selector of the jPlayer div.
+               *   media: Object - The media object used in jPlayer("setMedia",media).
+               *   options: Object - The jPlayer options.
+               *
+               * Multiple instances must set the cssSelectorAncestor in the jPlayer options. Defaults to "#cp_container_1" in CirclePlayer.
+               */
+                              
+              var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
+                {
+                m4a: "media/me_2013_07_npr.m4a",
+                oga: "media/me_2013_07_npr.ogg"
+                }, {
+                cssSelectorAncestor: "#cp_container_1"
+                });
+                              
+              });
+        </script>
+
+    </head>
+    
+    <body>
+		<!-- The jPlayer div must not be hidden. Keep it at the root of the body element to avoid any such problems. -->
+		<div id="jquery_jplayer_1" class="cp-jplayer"></div>
+
+        <div class="prototype-wrapper"> <!-- A wrapper to emulate use in a webpage and center align -->
+
+            <div id="main">
+                <p><a href="index.html">Home</a></p>
+                <h1>Morning Edition</h1>
+                <p>July 2013</p>
+                
+                <div id="chart">
+                    <div id="explanation" style="visibility: hidden;">
+                        <span id="segmentName"></span><br/>
+                        <span id="segmentStart"></span><br/>
+                        <span id="segmentLength"></span><br/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="jp-current-time"></div>
+            
+            <div id="marker">
+                <div id="marker0">0</div>
+                <div id="marker15">15</div>
+                <div id="marker30">30</div>
+                <div id="marker45">45</div>
+            </div>
+        
+            <!-- The container for the interface can go where you want to display it. Show and hide it as you need. -->
+            
+            <div id="cp_container_1" class="cp-container">
+                <div class="cp-buffer-holder"> <!-- .cp-gt50 only needed when buffer is > than 50% -->
+                    <div class="cp-buffer-1"></div>
+                    <div class="cp-buffer-2"></div>
+                </div>
+                <div class="cp-progress-holder"> <!-- .cp-gt50 only needed when progress is > than 50% -->
+                    <div class="cp-progress-1"></div>
+                    <div class="cp-progress-2"></div>
+                </div>
+                <div class="cp-circle-control"></div>
+                <ul class="cp-controls">
+                    <li><a class="cp-play" tabindex="1">play</a></li>
+                    <li><a class="cp-pause" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
+                </ul>
+            </div>
+        </div>
+
+            
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script>
+            
+            var width = 960,
+            height = 700,
+            radius = Math.min(width, height) / 2.5;
+            
+            // Mapping of segment types to colors.
+            var colors = {
+                "Promo": "#9e9ac8",
+                "Newscast": "#e7ba52",
+                "Credit": "#a1d99b",
+                "Music": "#c7c7c7",
+                "Segment": "#9ecae1",
+                "Fill segment": "#c6dbef",
+                "Other": "#dadaeb"
+            };
+            
+            var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("id", "container")
+            .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");
+            
+            var partition = d3.layout.partition()
+            .sort(null)
+            .size([2 * Math.PI, radius * radius])
+            .value(function(d) { return d.size; });
+            
+            var arc = d3.svg.arc()
+            .startAngle(function(d) { return d.x; })
+            .endAngle(function(d) { return d.x + d.dx; })
+            .innerRadius(function(d) { return Math.sqrt(d.y); })
+            .outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
+            
+            var dataFile = "data/me_2013_07_npr.json";
+            
+            d3.json(dataFile, function(error, root) {
+                    var path = svg.datum(root).selectAll("path")
+                    .data(partition.nodes)
+                    .enter().append("path")
+                    .attr("display", function(d) { return d.depth ? null : "none"; }) // hide inner ring
+                    .attr("d", arc)
+                    .style("stroke", "#fff")
+                    .style("fill", function(d) { return colors[d.type]; })
+                    .on("mouseover", mouseover)
+                    });
+            
+            // Add the mouseleave handler to the bounding circle.
+            d3.select("#container").on("mouseleave", mouseleave);
+            
+            
+            // Show explanation panel when hovering over a segment.
+            function mouseover(d) {
+                
+                d3.select("#segmentName")
+                .text(d.name);
+                
+                d3.select("#segmentStart")
+                .text("Start: " + d.startTime);
+                
+                d3.select("#segmentLength")
+                .text("Length: " + Math.floor(d.size) + ":" + (Math.round((d.size - Math.floor(d.size))*60) + "0").substr(0,2));
+                
+                d3.select("#explanation")
+                .style("visibility", "");
+            }
+            
+            // Hide explanation panel when moving off of a segment.
+            function mouseleave(d) {
+                
+                d3.select("#explanation")
+                .style("visibility", "hidden");
+            }
+            
+            d3.select(self.frameElement).style("height", height + "px");
+            
+        </script>
+    </body>
+</html>
