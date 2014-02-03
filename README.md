@@ -33,6 +33,8 @@ pip install -r requirements.txt
 
 ## Deploy to staging
 ```
+workon timepiece
+cd /path/to/timepiece/repository/
 fab staging master deploy
 ```
 *Warning*: This only works if we've set up an AWS IAM account for you.
